@@ -20,6 +20,12 @@ Repo-scoped (shared in a target repo):
 
 Restart Codex after installing skills. To verify in Codex CLI, use `/skills` (or type `$` to select a skill).
 
+#### Troubleshooting (Codex)
+
+If Codex reports `invalid YAML: mapping values are not allowed in this context` for `SKILL.md`, the YAML frontmatter is not valid. A common cause is an unquoted `description:` value containing `: ` (e.g., `workflow: activate`). Fix by quoting the value:
+
+- `description: "… workflow: activate …"`
+
 ### Claude Code
 
 Claude Code discovers skills from `.claude/skills/` (repo-scoped) and `~/.claude/skills/` (user-scoped). To install this skill, copy or symlink `skills/tdd` into one of those locations.
