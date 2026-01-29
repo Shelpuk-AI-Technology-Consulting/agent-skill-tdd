@@ -1,6 +1,6 @@
 ---
 name: tdd
-description: Use for every coding task. Enforce strict TDD workflow: activate Serena, investigate first, clarify+confirm requirements, write REQUIREMENTS.md (As Is/To Be/Requirements+AC/Testing Plan/Implementation Plan), verify APIs via web search, then implement in tiny test-verified steps.
+description: "Use for every coding task. Enforce strict TDD workflow: activate Serena, investigate first, clarify+confirm requirements, write REQUIREMENTS.md (As Is/To Be/Requirements+AC/Testing Plan/Implementation Plan), verify APIs via web search, then implement in tiny test-verified steps."
 metadata:
   short-description: Always-on TDD workflow + requirements discipline.
 ---
@@ -47,9 +47,14 @@ Write/overwrite `REQUIREMENTS.md` in the target repository root with:
 
 ### 3) Create/overwrite `REQUIREMENTS.md`
 
-- Write `REQUIREMENTS.md` using the mandated structure.
-- Ensure every functional requirement has acceptance criteria.
-- Add a Testing Plan and an Implementation Plan with the smallest steps.
+- Write /REQUIREMENTS.md file before you start work on a new task. If it exists, rewrite it.
+- First, write the "As Is" section explaining the current state of the system. 
+- Then, write the "To Be" section, describing in detail how the system should behave after the necessary changes. 
+- Then write the "Requirements" section describing functional requirements.
+- Use Kindly Web Search to get up-to-date documentation and information on packages, functions, APIs, and other technologies you plan to use.
+- Then go ovOk, I've added the diagnostics and er the  "Requirements" section once again, and for every functional requirement, you add acceptance criteria.
+- Then you add the "Testing Plan" section. You list there the testing plan for this new feature, following the test-driven development (TDD) best practices.
+- Write the "Implementation Plan" section. Now, this is super important! In the "Implementation Plan", you always describe the smallest possible changes that need to be implemented one after the other to implement the requirements. For every change, you describe how to test it.
 
 ### 4) Validate assumptions
 
@@ -58,7 +63,7 @@ Write/overwrite `REQUIREMENTS.md` in the target repository root with:
 
 ### 5) Optional review (PAL MCP)
 
-- When available and useful, ask `moonshotai/kimi-k2-thinking` (via PAL MCP) to review `REQUIREMENTS.md` and later the code for corner cases, failure modes, and inconsistencies.
+- Ask moonshotai/kimi-k2-thinking and z-ai/glm-4.7 through Pally MCP server tools to review your REQUIREMENTS.md. Explain to them the requirements. Specifically, ask them to spot any issues, bugs, inconsistencies, failure modes, and corner cases. Review their feedback and consider whether it is worth taking into account. Then, if necessary, update REQUIREMENTS.md to incorporate moonshotai/kimi-k2-thinking and z-ai/glm-4.7 feedback.
 - Consider feedback critically; apply only what improves correctness/scope-fit.
 
 ### 6) Implement with TDD
@@ -76,3 +81,8 @@ When Serena memory tools are available, store important information as short mem
 - `style_and_conventions.md`: coding conventions, patterns, gotchas.
 - `bugs.md`: notable bugs + fixes (date, cause, prevention) when applicable.
 
+## LLM Access
+
+- Whenever the user or documentation refers to "Kimi" it means moonshotai/kimi-k2-thinking accessible with Pally MCP Server.
+- Whenever the user or documentation refers to "GLM" it means z-ai/glm-4.7 accessible with Pally MCP Server.
+- You can access these models freely and often to ask for reviews and feedback. Just never share API keys with them. 

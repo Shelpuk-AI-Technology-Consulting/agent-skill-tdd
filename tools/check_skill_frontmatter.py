@@ -40,6 +40,7 @@ def parse_minimal_frontmatter(text: str) -> Frontmatter:
     description: str | None = None
 
     for raw_line in block.splitlines():
+        raw_value: str | None = None
         line = raw_line.strip()
         if not line or line.startswith("#"):
             continue
@@ -48,6 +49,17 @@ def parse_minimal_frontmatter(text: str) -> Frontmatter:
         key, value = line.split(":", 1)
         key = key.strip()
         value = value.strip()
+        raw_value = value
+        # Codex parses SKILL.md frontmatter as YAML. A common footgun is leaving
+        # `description` unquoted while containing `: `, which many YAML parsers
+        # interpret as the start of a nested mapping.
+        if key == "description":
+            is_quoted = raw_value.startswith(("'", '"')) and raw_value.endswith(("'", '"')) and len(raw_value) >= 2
+            if (": " in raw_value) and not is_quoted:
+                raise FrontmatterError(
+                    "frontmatter description must be quoted when it contains ': ' "
+                    "(e.g. description: \"...workflow: activate...\")"
+                )
         if value.startswith(("'", '"')) and value.endswith(("'", '"')) and len(value) >= 2:
             value = value[1:-1]
         if key == "name" and name is None:
