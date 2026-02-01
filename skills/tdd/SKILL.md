@@ -61,16 +61,18 @@ Write/overwrite `REQUIREMENTS.md` in the target repository root with:
 - Use Kindly Web Search to verify any API or dependency assumptions.
 - Update `REQUIREMENTS.md` if assumptions change (and re-confirm requirements when needed).
 
-### 5) Optional review (PAL MCP)
+### 5) Review with Lad MCP
 
-- Ask moonshotai/kimi-k2-thinking and z-ai/glm-4.7 through Pally MCP server tools to review your REQUIREMENTS.md. Explain to them the requirements. Specifically, ask them to spot any issues, bugs, inconsistencies, failure modes, and corner cases. Review their feedback and consider whether it is worth taking into account. Then, if necessary, update REQUIREMENTS.md to incorporate moonshotai/kimi-k2-thinking and z-ai/glm-4.7 feedback.
-- Consider feedback critically; apply only what improves correctness/scope-fit.
+- Review your system design in REQUIREMENTS.md with Lad MCP Server. Explain the requirements. Provide as much context as you can. 
+- Review Lad's feedback and consider whether it is worth taking into account. Then, if necessary, update REQUIREMENTS.md to incorporate this feedback.
 
-### 6) Implement with TDD
+### 6) Implement with TDD and review with Lad
 
 - Follow the Implementation Plan in order.
 - After each step: run the smallest relevant tests first; expand to broader tests when confidence is needed.
 - Keep diffs minimal and focused; avoid unrelated refactors.
+- Use Lad MCP Server tools to review your code. Ask to spot potential bugs, issues, corner cases, failure modes, and potential improvements. 
+- Review Lad's feedback. Implement the suggestions that are worthy of consideration.
 
 ## Serena memories (when supported)
 
@@ -80,9 +82,3 @@ When Serena memory tools are available, store important information as short mem
 - `suggested_commands.md`: build/test/lint/smoke commands.
 - `style_and_conventions.md`: coding conventions, patterns, gotchas.
 - `bugs.md`: notable bugs + fixes (date, cause, prevention) when applicable.
-
-## LLM Access
-
-- Whenever the user or documentation refers to "Kimi" it means moonshotai/kimi-k2-thinking accessible with Pally MCP Server.
-- Whenever the user or documentation refers to "GLM" it means z-ai/glm-4.7 accessible with Pally MCP Server.
-- You can access these models freely and often to ask for reviews and feedback. Just never share API keys with them. 
