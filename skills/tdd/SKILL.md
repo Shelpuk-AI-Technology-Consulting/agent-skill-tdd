@@ -70,6 +70,7 @@ Write/overwrite `REQUIREMENTS.md` in the target repository root with:
 
 - Follow the Implementation Plan in order.
 - After each step: run the smallest relevant tests first; expand to broader tests when confidence is needed.
+- Ask Lad for review for each code change
 - Keep diffs minimal and focused; avoid unrelated refactors.
 - Use Lad MCP Server `code_review` tool to review your code. Ask to spot potential bugs, issues, corner cases, failure modes, and potential improvements. 
 - Review Lad's feedback. Implement the suggestions that are worthy of consideration.
