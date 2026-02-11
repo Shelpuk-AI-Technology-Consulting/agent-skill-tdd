@@ -4,6 +4,25 @@ This repository contains an Agent Skill named `tdd` (stored under `skills/tdd/`)
 
 ## Install
 
+### skill-installer
+
+Use `skill-installer` when you want to install directly from GitHub instead of copying/symlinking files. This uses the built-in Codex system skill (`skill-installer`) and its helper script.
+
+Primary (recommended, branch-agnostic):
+
+- `python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo Shelpuk-AI-Technology-Consulting/agent-skill-tdd --path skills/tdd`
+
+Alternative (explicit branch/path URL):
+
+- `$skill-installer install https://github.com/Shelpuk-AI-Technology-Consulting/agent-skill-tdd/tree/main/skills/tdd` (replace `main` with another ref if needed)
+
+Troubleshooting:
+
+- A bare repo URL (for example `https://github.com/Shelpuk-AI-Technology-Consulting/agent-skill-tdd`) fails with `Missing --path for GitHub URL.` because the skill directory is not specified.
+- Use one of the path-aware forms above (`--repo ... --path skills/tdd` or `/tree/<ref>/skills/tdd`).
+
+Restart Codex after installing skills. Claude Code loads/updates skills automatically when they change.
+
 ### Codex (recommended)
 
 Codex discovers skills from `.codex/skills/` (repo-scoped) and `~/.codex/skills/` (user-scoped). To install this skill, copy or symlink `skills/tdd` into one of those locations.
