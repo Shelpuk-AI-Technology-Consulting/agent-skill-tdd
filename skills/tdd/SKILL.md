@@ -52,6 +52,7 @@ Write/overwrite `REQUIREMENTS.md` in the target repository root with:
 - Then, write the "To Be" section, describing in detail how the system should behave after the necessary changes. 
 - Then write the "Requirements" section describing functional requirements.
 - Use Kindly Web Search to get up-to-date documentation and information on packages, functions, APIs, and other technologies you plan to use.
+- Record useful Kindly Web Search findings to Serena memories for future use.
 - Then go over the "Requirements" section once again, and for every functional requirement, you add acceptance criteria.
 - Then you add the "Testing Plan" section. You list there the testing plan for this new feature, following the test-driven development (TDD) best practices.
 - Write the "Implementation Plan" section. Now, this is super important! In the "Implementation Plan", you always describe the smallest possible changes that need to be implemented one after the other to implement the requirements. For every change, you describe how to test it.
@@ -65,15 +66,16 @@ Write/overwrite `REQUIREMENTS.md` in the target repository root with:
 
 - Review your system design in REQUIREMENTS.md with `system_design_review` tool of the Lad MCP Server. Explain the requirements. Provide as much context as you can. 
 - Review Lad's feedback and consider whether it is worth taking into account. Then, if necessary, update REQUIREMENTS.md to incorporate this feedback.
+- Keep reviewing REQUIREMENTS.md with Lad until it stops providing useful feedback.
 
 ### 6) Implement with TDD and review with Lad
 
 - Follow the Implementation Plan in order.
 - After each step: run the smallest relevant tests first; expand to broader tests when confidence is needed.
-- Ask Lad for review for each code change
 - Keep diffs minimal and focused; avoid unrelated refactors.
-- Use Lad MCP Server `code_review` tool to review your code. Ask to spot potential bugs, issues, corner cases, failure modes, and potential improvements. 
-- Review Lad's feedback. Implement the suggestions that are worthy of consideration.
+- Use Lad MCP Server `code_review` tool to review each of your code changes. Implement the suggestions that are worthy of consideration.
+- Keep reviewing your code with Lad until it stops providing useful feedback.
+- Record useful implementation comments and design information to Serena memories for future use.
 
 ## Serena memories (when supported)
 
