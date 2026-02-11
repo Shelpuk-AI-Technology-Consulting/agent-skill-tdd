@@ -71,6 +71,7 @@ Write/overwrite `REQUIREMENTS.md` in the target repository root with:
 ### 6) Implement with TDD and review with Lad
 
 - Follow the Implementation Plan in order.
+- Follow Test-Driven Development (TDD) best practices. Implement tests first. Implement feature next. Make sure the tests pass.
 - After each step: run the smallest relevant tests first; expand to broader tests when confidence is needed.
 - Keep diffs minimal and focused; avoid unrelated refactors.
 - Use Lad MCP Server `code_review` tool to review each of your code changes. Implement the suggestions that are worthy of consideration.
