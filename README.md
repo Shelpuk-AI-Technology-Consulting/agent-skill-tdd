@@ -53,8 +53,6 @@ We built this skill at [Shelpuk AI Technology Consulting](https://shelpuk.com) b
 
 If you find this useful, please drop us a star ⭐ – it's huge motivation for us to keep improving it!
 
-**P.S.** Check out [Kindly Web Search](https://github.com/Shelpuk-AI-Technology-Consulting/kindly-web-search-mcp-server) and [Lad MCP Server](https://github.com/Shelpuk-AI-Technology-Consulting/lad_mcp_server) – they pair perfectly with this skill for a complete research-and-review workflow.
-
 ## How It Works
 
 The `tdd` skill is a `SKILL.md` file that Codex and Claude Code discover automatically from `~/.codex/skills/tdd/` or `~/.claude/skills/tdd/`. When active, it instructs the agent to follow a 6-step workflow for every coding task:
