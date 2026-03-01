@@ -1,6 +1,6 @@
 # Improve AI-generated code quality by 20%
 
-TOO skill is a part of the **[Shelpuk AI Technology Consulting](https://shelpuk.com) agentic suite** – a set of tools that together improve the code quality produced by AI coding agents by **15–20%**.
+TDD Skill is a part of the **[Shelpuk AI Technology Consulting](https://shelpuk.com) agentic suite** – a set of tools that together improve the code quality produced by AI coding agents by **15–20%**.
 
 Works with **Claude Code**, **Codex**, **Antigravity**, **Cursor**, **Windsurf**, and any agent that supports skills or MCP servers.
 
