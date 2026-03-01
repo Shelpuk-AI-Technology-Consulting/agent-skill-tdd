@@ -88,7 +88,7 @@ For each task, write `REQUIREMENTS.md` to `.requirements/<datetime>_<feature_nam
 
 ## Workflow Activity Diagram (PlantUML)
 
-Keep this diagram aligned with the textual workflow above.
+This diagram explains the same workflow as above in PlantUML format.
 
 ```plantuml
 @startuml
