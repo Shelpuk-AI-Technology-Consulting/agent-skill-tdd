@@ -1,4 +1,4 @@
-# agent-skill-tdd
+# Improve AI-generated code quality by 20%
 
 Part of the **[Shelpuk AI Technology Consulting](https://shelpuk.com) agentic suite** – a set of tools that together improve the code quality produced by AI coding agents by **15–20%**.
 
@@ -12,6 +12,8 @@ Works with **Claude Code**, **Codex**, **Antigravity**, **Cursor**, **Windsurf**
 | [Lad MCP Server](https://github.com/Shelpuk-AI-Technology-Consulting/lad_mcp_server) | Project-aware AI design and code review |
 
 If you like what we're building, please ⭐ **star this repo** – it's a huge motivation for us to keep going!
+
+# TDD Skill
 
 ## Why enforce TDD with a skill?
 
