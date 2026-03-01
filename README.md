@@ -1,67 +1,156 @@
 # agent-skill-tdd
 
-This repository contains an Agent Skill named `tdd` (stored under `skills/tdd/`) to replace repeated per-project `AGENTS.md` boilerplate with a consistent TDD + requirements workflow.
+Part of the **[Shelpuk AI Technology Consulting](https://shelpuk.com) agentic suite** – a set of tools that together improve the code quality produced by AI coding agents by **15–20%**.
+
+Works with **Claude Code**, **Codex**, **Antigravity**, **Cursor**, **Windsurf**, and any agent that supports skills or MCP servers.
+
+| Component | Role |
+|---|---|
+| **tdd** ← you are here | Enforces TDD, requirements discipline, and peer review for every coding task |
+| [Serena](https://github.com/oraios/serena) | Semantic code navigation + persistent project memory |
+| [Kindly Web Search](https://github.com/Shelpuk-AI-Technology-Consulting/kindly-web-search-mcp-server) | Up-to-date API and package documentation via web search |
+| [Lad MCP Server](https://github.com/Shelpuk-AI-Technology-Consulting/lad_mcp_server) | Project-aware AI design and code review |
+
+If you like what we're building, please ⭐ **star this repo** – it's a huge motivation for us to keep going!
+
+## Why enforce TDD with a skill?
+
+Picture this: Your AI coding agent just finished a new feature. The code looks clean, the agent is confident – but there's no record of what the feature was supposed to do, the edge cases were never discussed, and when you ask the agent about its design decisions next week, it has no idea what you're referring to. A month later you discover it silently broke an integration that was agreed on in a conversation the agent never saw.
+
+This isn't a bug in the code. It's a bug in the **process**.
+
+### The "No Process" Problem
+
+AI coding agents are stateless by default. Each session starts fresh. Without a structured workflow, even the best models routinely:
+
+- Jump straight to implementation without understanding requirements
+- Skip tests or write them after the fact as an afterthought
+- Make design decisions without checking current API documentation
+- Review their own code and miss "bad token" self-reinforcing mistakes
+- Lose all decisions and reasoning the moment the session ends
+
+The result? Technically coherent code that solves the wrong problem – and no paper trail to figure out how you got there.
+
+### What This Skill Does Differently
+
+We built this skill at [Shelpuk AI Technology Consulting](https://shelpuk.com) because we needed our AI coding agents to work the way **disciplined engineers** work: clarify before building, document before coding, test before shipping, and get a second opinion before merging.
+
+✅ **Investigate first, code second** – agents understand the current state before proposing any changes
+
+✅ **Explicit requirements confirmation** – no requirement changes without human sign-off, no silent interpretation
+
+✅ **Per-task requirements history** – each task gets its own `.requirements/<datetime>_<feature_name>/REQUIREMENTS.md` with *As Is / To Be / Requirements / Acceptance Criteria / Testing Plan / Implementation Plan*; nothing is ever overwritten
+
+✅ **Validated assumptions** – agents use [Kindly Web Search](https://github.com/Shelpuk-AI-Technology-Consulting/kindly-web-search-mcp-server) to confirm API signatures, breaking changes, and deprecations before implementing
+
+✅ **Design review before code** – architectural proposals go through [Lad MCP Server](https://github.com/Shelpuk-AI-Technology-Consulting/lad_mcp_server) `system_design_review` before a line is written
+
+✅ **Strict TDD in the smallest possible steps** – tests first, implementation second, then Lad `code_review` on every change
+
+✅ **Project memory via Serena** – design decisions, debug findings, and conventions are stored in [Serena](https://github.com/oraios/serena) memories and survive across sessions and team members
+
+If you find this useful, please drop us a star ⭐ – it's huge motivation for us to keep improving it!
+
+**P.S.** Check out [Kindly Web Search](https://github.com/Shelpuk-AI-Technology-Consulting/kindly-web-search-mcp-server) and [Lad MCP Server](https://github.com/Shelpuk-AI-Technology-Consulting/lad_mcp_server) – they pair perfectly with this skill for a complete research-and-review workflow.
+
+## How It Works
+
+The `tdd` skill is a `SKILL.md` file that Codex and Claude Code discover automatically from `~/.codex/skills/tdd/` or `~/.claude/skills/tdd/`. When active, it instructs the agent to follow a 6-step workflow for every coding task:
+
+1. **Activate Serena** – for semantic code navigation and persistent project memory
+2. **Investigate** – understand the current state before proposing any changes
+3. **Clarify + confirm requirements** – ask questions, propose concrete testable requirements, get explicit confirmation
+4. **Write `REQUIREMENTS.md`** – create `.requirements/<YYYYMMDDTHHMMSSZ>_<feature_name>/REQUIREMENTS.md` before any implementation begins
+5. **Review design with Lad** – run the requirements and system design through `system_design_review`, iterate until feedback runs dry
+6. **Implement with TDD, reviewed by Lad** – write tests first, implement, run tests, run `code_review` on each change, iterate
+
+## Skill Suite
+
+This skill is part of a suite designed to work together:
+
+| Tool | Role |
+|---|---|
+| [Serena](https://github.com/oraios/serena) | Semantic code navigation + persistent project memory |
+| [Kindly Web Search](https://github.com/Shelpuk-AI-Technology-Consulting/kindly-web-search-mcp-server) | Up-to-date API/package documentation via web search |
+| [Lad MCP Server](https://github.com/Shelpuk-AI-Technology-Consulting/lad_mcp_server) | Project-aware AI code and design review |
 
 ## Install
 
-### skill-installer
+### skill-installer (recommended for Codex)
 
-Use `skill-installer` when you want to install directly from GitHub instead of copying/symlinking files. This uses the built-in Codex system skill (`skill-installer`) and its helper script.
+Use `skill-installer` to pull directly from GitHub without copying or symlinking files manually. This uses the built-in Codex system skill (`skill-installer`) and its helper script.
 
 Primary (recommended, branch-agnostic):
 
-- `python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo Shelpuk-AI-Technology-Consulting/agent-skill-tdd --path skills/tdd`
+```bash
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
+  --repo Shelpuk-AI-Technology-Consulting/agent-skill-tdd --path skills/tdd
+```
 
 Alternative (explicit branch/path URL):
 
-- `$skill-installer install https://github.com/Shelpuk-AI-Technology-Consulting/agent-skill-tdd/tree/main/skills/tdd` (replace `main` with another ref if needed)
+```
+$skill-installer install https://github.com/Shelpuk-AI-Technology-Consulting/agent-skill-tdd/tree/main/skills/tdd
+```
 
-Troubleshooting:
+(Replace `main` with another ref if needed.)
 
-- A bare repo URL (for example `https://github.com/Shelpuk-AI-Technology-Consulting/agent-skill-tdd`) fails with `Missing --path for GitHub URL.` because the skill directory is not specified.
-- Use one of the path-aware forms above (`--repo ... --path skills/tdd` or `/tree/<ref>/skills/tdd`).
+> **Troubleshooting:** A bare repo URL (e.g. `https://github.com/Shelpuk-AI-Technology-Consulting/agent-skill-tdd`) fails with `Missing --path for GitHub URL.` Use one of the path-aware forms above.
 
-Restart Codex after installing skills. Claude Code loads/updates skills automatically when they change.
+Restart Codex after installing. Claude Code loads/updates skills automatically when they change.
 
-### Codex (recommended)
+### Codex (manual)
 
-Codex discovers skills from `.codex/skills/` (repo-scoped) and `~/.codex/skills/` (user-scoped). To install this skill, copy or symlink `skills/tdd` into one of those locations.
+Codex discovers skills from `.codex/skills/` (repo-scoped) and `~/.codex/skills/` (user-scoped).
 
-User-scoped (all repos):
+User-scoped (applies to all repos):
 
-- `mkdir -p ~/.codex/skills`
-- `ln -s "$(pwd)/skills/tdd" ~/.codex/skills/tdd` (or `cp -R skills/tdd ~/.codex/skills/tdd`)
+```bash
+mkdir -p ~/.codex/skills
+ln -s "$(pwd)/skills/tdd" ~/.codex/skills/tdd
+# or: cp -R skills/tdd ~/.codex/skills/tdd
+```
 
-Repo-scoped (shared in a target repo):
+Repo-scoped (applies to one target repo):
 
-- `mkdir -p <target-repo>/.codex/skills`
-- `ln -s "$(pwd)/skills/tdd" <target-repo>/.codex/skills/tdd` (or `cp -R skills/tdd <target-repo>/.codex/skills/tdd`)
+```bash
+mkdir -p <target-repo>/.codex/skills
+ln -s "$(pwd)/skills/tdd" <target-repo>/.codex/skills/tdd
+# or: cp -R skills/tdd <target-repo>/.codex/skills/tdd
+```
 
-Restart Codex after installing skills. To verify in Codex CLI, use `/skills` (or type `$` to select a skill).
+Restart Codex. Verify with `/skills` (or type `$` to browse skills).
 
-#### Troubleshooting (Codex)
+> **Troubleshooting:** If Codex reports `invalid YAML: mapping values are not allowed in this context`, the frontmatter `description` contains `: ` without quoting. Fix: `description: "…workflow: activate…"`.
 
-If Codex reports `invalid YAML: mapping values are not allowed in this context` for `SKILL.md`, the YAML frontmatter is not valid. A common cause is an unquoted `description:` value containing `: ` (e.g., `workflow: activate`). Fix by quoting the value:
+### Claude Code (manual)
 
-- `description: "… workflow: activate …"`
+Claude Code discovers skills from `.claude/skills/` (repo-scoped) and `~/.claude/skills/` (user-scoped).
 
-### Claude Code
+User-scoped (applies to all repos):
 
-Claude Code discovers skills from `.claude/skills/` (repo-scoped) and `~/.claude/skills/` (user-scoped). To install this skill, copy or symlink `skills/tdd` into one of those locations.
+```bash
+mkdir -p ~/.claude/skills
+ln -s "$(pwd)/skills/tdd" ~/.claude/skills/tdd
+# or: cp -R skills/tdd ~/.claude/skills/tdd
+```
 
-User-scoped (all repos):
+Repo-scoped (applies to one target repo):
 
-- `mkdir -p ~/.claude/skills`
-- `ln -s "$(pwd)/skills/tdd" ~/.claude/skills/tdd` (or `cp -R skills/tdd ~/.claude/skills/tdd`)
+```bash
+mkdir -p <target-repo>/.claude/skills
+ln -s "$(pwd)/skills/tdd" <target-repo>/.claude/skills/tdd
+# or: cp -R skills/tdd <target-repo>/.claude/skills/tdd
+```
 
-Repo-scoped (shared in a target repo):
-
-- `mkdir -p <target-repo>/.claude/skills`
-- `ln -s "$(pwd)/skills/tdd" <target-repo>/.claude/skills/tdd` (or `cp -R skills/tdd <target-repo>/.claude/skills/tdd`)
-
-Claude Code loads/updates skills automatically when they change. To verify, ask: `What Skills are available?`
+Claude Code loads/updates skills automatically when they change. Verify by asking: `What Skills are available?`
 
 ## Validate (this repo)
 
-- Skill frontmatter check: `python3 tools/check_skill_frontmatter.py skills/tdd`
-- Unit tests: `python3 -m unittest discover -s tests -p 'test*.py'`
+```bash
+# Frontmatter check
+python3 tools/check_skill_frontmatter.py skills/tdd
+
+# Unit tests
+python3 -m unittest discover -s tests -p 'test*.py'
+```
