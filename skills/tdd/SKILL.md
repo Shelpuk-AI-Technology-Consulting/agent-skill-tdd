@@ -80,6 +80,7 @@ For each task, write `REQUIREMENTS.md` to `.requirements/<datetime>_<feature_nam
 
 - Follow the Implementation Plan in order.
 - Follow Test-Driven Development (TDD) best practices. Implement tests first. Implement feature next. Make sure the tests pass.
+- After each test is implemented, review the test implementation with Lad MCP Server `code_review` tool. Implement the suggestions that are worthy of consideration.
 - After each step: run the smallest relevant tests first; expand to broader tests when confidence is needed.
 - Keep diffs minimal and focused; avoid unrelated refactors.
 - Use Lad MCP Server `code_review` tool to review each of your code changes. Implement the suggestions that are worthy of consideration.
@@ -134,9 +135,11 @@ repeat while (More useful design feedback?) is (yes)
 repeat
   :Pick next smallest implementation step;
   :Write or update tests first;
+  :Review test implementation with Lad code_review;
+  :Apply worthwhile test feedback;
   :Implement code change;
   :Run smallest relevant tests;
-  :Run Lad code_review;
+  :Review code change with Lad code_review;
   :Apply worthwhile code feedback;
 repeat while (Implementation plan remaining?) is (yes)
 
