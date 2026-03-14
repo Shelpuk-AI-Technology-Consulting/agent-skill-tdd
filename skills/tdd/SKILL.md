@@ -63,7 +63,7 @@ For each task, write `REQUIREMENTS.md` to `.requirements/<datetime>_<feature_nam
 - Record useful Kindly Web Search findings to Serena memories for future use.
 - Then go over the "Requirements" section once again, and for every functional requirement, you add acceptance criteria.
 - Then you add the "Testing Plan" section. You list there the testing plan for this new feature, following the test-driven development (TDD) best practices.
-- Write the "Implementation Plan" section. Now, this is super important! In the "Implementation Plan", you always describe the smallest possible changes that need to be implemented one after the other to implement the requirements. For every change, you describe how to test it.
+- Write the "Implementation Plan" section. The Implementation Plan describes the feature implementation order and attributes every feature to the tests from the Testing Plan that should validate it. Now, this is super important! In the "Implementation Plan", you always describe the smallest possible changes that need to be implemented one after the other to implement the requirements. For every change, you describe how to test it.
 
 ### 4) Validate assumptions
 
